@@ -34,3 +34,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Database Schema
+
+```sql
+CREATE TYPE semester AS ENUM ('1', '2', '3', '4', '5', '6', '7', '8');
+
+CREATE TABLE beasiswa (
+  id SERIAL PRIMARY KEY,
+  nama VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  no_hp VARCHAR(255) NOT NULL,
+  smt_saat_ini semester NOT NULL,
+  ipk_terakhir NUMERIC(3, 2) NOT NULL,
+  pilihan_beasiswa VARCHAR(255) NOT NULL,
+  status_ajuan VARCHAR(50) DEFAULT 'Belum Diverifikasi' NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  file_upload_url VARCHAR(255) NOT NULL
+);
+
+INSERT INTO beasiswa (nama, email, no_hp, smt_saat_ini, ipk_terakhir, pilihan_beasiswa, status_ajuan, created_at, file_upload_url)
+VALUES ('John Doe', 'john.doe@example.com', '081234567890', '2', 3.75, 'Beasiswa Non-Akademik', 'Sudah Diverifikasi', NOW(), 'https://xrquhcubmruwlncd.public.blob.vercel-storage.com/vG9Cn9P-hCFlA5oSUsAKglfvq9KoyOll2lFXys.png');
+
+```
