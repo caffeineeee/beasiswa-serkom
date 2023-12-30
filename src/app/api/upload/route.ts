@@ -2,6 +2,8 @@ import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { customAlphabet } from 'nanoid';
 
+export const runtime = 'edge';
+
 const nanoid = customAlphabet(
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
     7

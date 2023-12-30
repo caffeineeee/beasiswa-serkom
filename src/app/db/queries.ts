@@ -24,12 +24,12 @@ export async function getLatestDaftarBeasiswa() {
         return [];
     }
 
-    // noStore();
+    noStore();
     const data = await sql`
         SELECT *
         FROM beasiswa
         ORDER BY created_at DESC
-        LIMIT 1;
+        LIMIT 2;
         `;
 
     return data.rows;

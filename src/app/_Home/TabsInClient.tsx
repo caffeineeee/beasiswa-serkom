@@ -16,27 +16,27 @@ import {
 
 import { DaftarForm } from './DaftarForm';
 import { ReactNode, useEffect, useState } from "react";
-import Uploader from "@/components/uploader";
+import { signal } from "@preact/signals-react";
 
 export function TabsInClient({ children }: { children: ReactNode; }) {
-    const storedDefaultTabValue = localStorage.getItem('selectedTab') || 'pilihanBeasiswa';
-    const [selectedTab, setSelectedTab] = useState(storedDefaultTabValue as "pilihanBeasiswa" | "daftar" | "hasil");
+    // const storedDefaultTabValue = localStorage.getItem('selectedTab') || 'pilihanBeasiswa';
+    // const [selectedTab, setSelectedTab] = useState(storedDefaultTabValue as "pilihanBeasiswa" | "daftar" | "hasil");
 
     // Update localStorage when the selectedTab changes
-    useEffect(() => {
-        localStorage.setItem('selectedTab', selectedTab);
-    }, [selectedTab]);
+    // useEffect(() => {
+    //     localStorage.setItem('selectedTab', selectedTab);
+    // }, [selectedTab]);
 
     return (
-        <Tabs defaultValue={selectedTab} className="w-[32rem]">
+        <Tabs defaultValue='daftar' className="w-[32rem]">
             <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="pilihanBeasiswa" id="pilihanBeasiswa" onClick={() => setSelectedTab("pilihanBeasiswa")}>
+                <TabsTrigger value="pilihanBeasiswa" id="pilihanBeasiswa">
                     Pilihan Beasiswa
                 </TabsTrigger>
-                <TabsTrigger value="daftar" id="daftar" onClick={() => setSelectedTab("daftar")}>
+                <TabsTrigger value="daftar" id="daftar">
                     Daftar
                 </TabsTrigger>
-                <TabsTrigger value="hasil" id="hasil" onClick={() => setSelectedTab("hasil")}>
+                <TabsTrigger value="hasil" id="hasil">
                     Hasil
                 </TabsTrigger>
             </TabsList>
@@ -52,32 +52,24 @@ export function TabsInClient({ children }: { children: ReactNode; }) {
                         <div>
                             <h1 className="text-xl font-bold pb-2">1. Beasiswa Akademik</h1>
                             Untuk mendaftar ke jenis beasiswa Akademik, Anda perlu memenuhi beberapa persyaratan berikut:
-                            <ol className="pl-8">
-                                <li key="1">1. Merupakan mahasiswa S1 dari Semester 1 hingga 8.</li>
-                                <li key="2">2. Memiliki nilai IPK terakhir &gt;= 3.00.</li>
-                                <li key="3">3. Mengajukan berkas persyaratan yaitu Transkrip Nilai terakhir saat pendaftaran.</li>
-                            </ol>
+                            1. Merupakan mahasiswa S1 dari Semester 1 hingga 8.
+                            2. Memiliki nilai IPK terakhir &gt;= 3.00.
+                            3. Mengajukan berkas persyaratan yaitu Transkrip Nilai terakhir saat pendaftaran.
                             <p>Apabila Anda memenuhi persyaratan di atas, daftarkan segera!</p>
                         </div>
                         <div>
                             <h1 className="text-xl font-bold pb-2">2. Beasiswa Non-akademik</h1>
                             Untuk mendaftar ke jenis beasiswa Non-akademik, Anda perlu memenuhi beberapa persyaratan berikut:
-                            <ol className="pl-8">
-                                <li>1. Merupakan mahasiswa S1 dari Semester 1 hingga 8.</li>
-                                <li>2. Memiliki nilai IPK terakhir &gt;= 3.00.</li>
-                                <li>3. Mengajukan berkas persyaratan yaitu Transkrip Nilai terakhir dan sertifikat perlombaan saat pendaftaran.</li>
-                            </ol>
+                            1. Merupakan mahasiswa S1 dari Semester 1 hingga 8.
+                            2. Memiliki nilai IPK terakhir &gt;= 3.00.
+                            3. Mengajukan berkas persyaratan yaitu Transkrip Nilai terakhir dan sertifikat perlombaan saat pendaftaran.
                             <p>Apabila Anda memenuhi persyaratan di atas, daftarkan segera!</p>
                         </div>
                     </CardContent>
                 </Card>
             </TabsContent>
             <TabsContent value="daftar">
-                <DaftarForm>
-                    <div className="bg-white/30 p-2 shadow-xl ring-1 ring-gray-900/5 rounded-lg backdrop-blur-lg max-w-xl mx-auto w-full">
-                        <Uploader />
-                    </div>
-                </DaftarForm>
+                <DaftarForm />
             </TabsContent>
             <TabsContent value="hasil">
                 <Card>

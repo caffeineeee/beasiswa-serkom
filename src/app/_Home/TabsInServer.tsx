@@ -46,13 +46,12 @@ export async function TabsInServer() {
                             {data.file_upload_url}
                         </a>
                         {data.file_upload_url && (
-                            // eslint-disable-next-line @next/next/no-img-element
                             <Image
                                 src={data.file_upload_url}
                                 alt="Preview"
                                 className="h-full w-full rounded-md object-cover"
-                                width={640}
-                                height={640}
+                                width={320}
+                                height={320}
                             />
                         )}
                     </div>
